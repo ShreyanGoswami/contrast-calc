@@ -68,19 +68,19 @@ export class InputComponent extends Component {
     }
 
     render() {
-        const inputParameters = [{ id: 1, 'name': 'steps', changeEvent: this.stepChanged },
-        { id: 2, 'name': 'hue_start', changeEvent: this.hueStartChanged },
-        { id: 3, 'name': 'hue_end', changeEvent: this.hueEndChanged },
-        { id: 4, 'name': 'hue_curve', changeEvent: this.hueEndChanged },
-        { id: 5, 'name': 'sat_start', changeEvent: this.statStartChanged },
-        { id: 6, 'name': 'sat_end', changeEvent: this.satEndChanged },
-        { id: 7, 'name': 'sat_curve', changeEvent: this.satCurvedChanged },
-        { id: 8, 'name': 'sat_rate', changeEvent: this.satRateChanged },
-        { id: 9, 'name': 'lum_start', changeEvent: this.lumStartChanged },
-        { id: 10, 'name': 'lum_end', changeEvent: this.lumEndChanged },
-        { id: 11, 'name': 'lum_curve', changeEvent: this.lumCurveChanged },
-        { id: 12, 'name': 'modifier', changeEvent: this.modifierChanged }]
-        const inputFieldsToRender = inputParameters.map(spec => <ParameterInput key={spec.id} name={spec.name} value={this.state[spec.name]} change={spec.changeEvent}></ParameterInput>) 
+        const inputParameters = [{ id: 1, 'name': 'steps', label: 'Steps', changeEvent: this.stepChanged },
+        { id: 2, 'name': 'hue_start', label: "Hue start", changeEvent: this.hueStartChanged },
+        { id: 3, 'name': 'hue_end', label: "Hue end", changeEvent: this.hueEndChanged },
+        { id: 4, 'name': 'hue_curve', label: "Hue curve",changeEvent: this.hueEndChanged },
+        { id: 5, 'name': 'sat_start', label: "Saturation Start",changeEvent: this.statStartChanged },
+        { id: 6, 'name': 'sat_end', label: "Saturation End",changeEvent: this.satEndChanged },
+        { id: 7, 'name': 'sat_curve', label: "Saturation Curve",changeEvent: this.satCurvedChanged },
+        { id: 8, 'name': 'sat_rate', label: "Saturation Rate",changeEvent: this.satRateChanged },
+        { id: 9, 'name': 'lum_start', label: "Luminosity Start",changeEvent: this.lumStartChanged },
+        { id: 10, 'name': 'lum_end', label: "Luminosity End",changeEvent: this.lumEndChanged },
+        { id: 11, 'name': 'lum_curve', label: "Luminosity Curve",changeEvent: this.lumCurveChanged },
+        { id: 12, 'name': 'modifier', label: "Modifier",changeEvent: this.modifierChanged }]
+        const inputFieldsToRender = inputParameters.map(spec => <ParameterInput key={spec.id} name={spec.label} value={this.state[spec.name]} change={spec.changeEvent}></ParameterInput>) 
         return (
             <div>
                 <form onSubmit = {this.handleSubmit}>
