@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ParameterInput from './ParameterInput'
 import * as generate from '../business/generate.js'
 import OutputComponent from './OutputComponent'
+import '../styles/horizontal-container.css'
 
 export class InputComponent extends Component {
 
@@ -82,12 +83,14 @@ export class InputComponent extends Component {
         { id: 12, 'name': 'modifier', label: "Modifier",changeEvent: this.modifierChanged }]
         const inputFieldsToRender = inputParameters.map(spec => <ParameterInput key={spec.id} name={spec.label} value={this.state[spec.name]} change={spec.changeEvent}></ParameterInput>) 
         return (
-            <div>
+            <div class="container">
+                <div class="container-item">
                 <form onSubmit = {this.handleSubmit}>
                     {inputFieldsToRender}
                     <button type="submit">Calculate</button>
                 </form>
-                <OutputComponent value={JSON.stringify(this.state.outputVal)}></OutputComponent>
+                </div>
+                <div  class="container-item"><OutputComponent value={JSON.stringify(this.state.outputVal)}></OutputComponent></div>
             </div>
         )
     }
