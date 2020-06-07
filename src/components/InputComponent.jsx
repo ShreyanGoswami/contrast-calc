@@ -47,6 +47,7 @@ export class InputComponent extends Component {
             this.setState({ hue_start: parseInt(event.target.value) })
         }
     }
+
     hueEndChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -55,14 +56,11 @@ export class InputComponent extends Component {
             this.setState({ hue_end: parseInt(event.target.value) })
         }
     }
+
     hueCurveChanged = (event) => {
-        const receivedValue = event.target.value
-        if (receivedValue === null || receivedValue === '') {
-            this.setState({ hue_curve: "" })
-        } else {
-            this.setState({ hue_curve: parseInt(event.target.value) })
-        }
+        this.setState({ hue_curve: event.target.value }) 
     }
+
     statStartChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -71,6 +69,7 @@ export class InputComponent extends Component {
             this.setState({ sat_start: parseInt(event.target.value) })
         }
     }
+
     satEndChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -79,9 +78,11 @@ export class InputComponent extends Component {
             this.setState({ sat_end: parseInt(event.target.value) })
         }
     }
+
     satCurvedChanged = (event) => {
         this.setState({sat_curve: event.target.value})
     }
+
     satRateChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -90,6 +91,7 @@ export class InputComponent extends Component {
             this.setState({ sat_rate: parseInt(event.target.value) })
         }
     }
+
     lumStartChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -98,6 +100,7 @@ export class InputComponent extends Component {
             this.setState({ lum_start: parseInt(event.target.value) })
         }
     }
+
     lumEndChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -106,9 +109,11 @@ export class InputComponent extends Component {
             this.setState({ lum_end: parseInt(event.target.value) })
         }
     }
+
     lumCurveChanged = (event) => {
         this.setState({lum_curve: event.target.value})
     }
+    
     modifierChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
@@ -117,20 +122,22 @@ export class InputComponent extends Component {
             this.setState({ modifer: parseInt(event.target.value) })
         }
     }
+
     contrastWhiteChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
             this.setState({ contrastWhite: "" })
         } else {
-            this.setState({ contrastWhite: parseInt(event.target.value) })
+            this.setState({ contrastWhite: event.target.value })
         }
     }
+    
     contrastBlackChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
             this.setState({ contrastBlack: "" })
         } else {
-            this.setState({ contrastBlack: parseInt(event.target.value) })
+            this.setState({ contrastBlack: event.target.value })
         }
     }
 
@@ -138,7 +145,7 @@ export class InputComponent extends Component {
         const inputParameters = [{ id: 1, 'name': 'steps', label: 'Steps', changeEvent: this.stepChanged },
         { id: 2, 'name': 'hue_start', label: "Hue start", changeEvent: this.hueStartChanged },
         { id: 3, 'name': 'hue_end', label: "Hue end", changeEvent: this.hueEndChanged },
-        { id: 4, 'name': 'hue_curve', label: "Hue curve",changeEvent: this.hueEndChanged },
+        { id: 4, 'name': 'hue_curve', label: "Hue curve",changeEvent: this.hueCurveChanged },
         { id: 5, 'name': 'sat_start', label: "Saturation Start",changeEvent: this.statStartChanged },
         { id: 6, 'name': 'sat_end', label: "Saturation End",changeEvent: this.satEndChanged },
         { id: 7, 'name': 'sat_curve', label: "Saturation Curve",changeEvent: this.satCurvedChanged },
