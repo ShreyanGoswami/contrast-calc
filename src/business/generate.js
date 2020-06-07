@@ -65,6 +65,7 @@ export function generate(specs) {
   hue_array = hue_array_adjusted
 
   var colorMap = []
+  var count = 1
 
   for (var index in lum_array) {
 
@@ -81,13 +82,13 @@ export function generate(specs) {
     var hex = chroma(chroma.hsv([params.hue, params.saturation, params.luminosity]))
     var hexRGB = chroma(chroma.hsv([params.hue, params.saturation, params.luminosity])).rgb()
 
-    const contrastWhite = chroma.contrast(hex, "#fafafa").toFixed(2)
-    const contrastBlack = chroma.contrast(hex, "#0d0f12").toFixed(2)
+    const contrastWhite = chroma.contrast(hex, '#' + specs.contrastWhite).toFixed(2)
+    const contrastBlack = chroma.contrast(hex, '#' + specs.contrastBlack).toFixed(2)
 
     var displayColor = ""
     if (contrastWhite >= 4.5) { displayColor = "white" } else { displayColor = "black" }
-
     var colorObj = {
+      no: count,
       hex: chroma(hex).hex(),
       hue: chroma(hex).hsv()[0],
       sat: chroma(hex).hsv()[1],
@@ -103,6 +104,7 @@ export function generate(specs) {
       displayColor:displayColor,
     }
     colorMap.push(colorObj)
+    count += 1;
   }
 
   return colorMap

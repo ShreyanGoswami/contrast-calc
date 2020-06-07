@@ -10,8 +10,6 @@ export class InputComponent extends Component {
         super(props)
     
         // TODO move to a file
-
-
         this.state = {
             steps: 10,
             hue_start: 356,
@@ -25,47 +23,54 @@ export class InputComponent extends Component {
             lum_end: 10,
             lum_curve: "easeOutQuad",
             modifier: 10,
+            contrastWhite: "fafafa",
+            contrastBlack: "0d0f12",
             outputVal: ""
         }
     }
 
     stepChanged = (event) => {
-        console.log('Received step changed event ', event)
-        this.setState({steps: event.target.value})
+        this.setState({steps: parseInt(event.target.value)})
     }
     
     hueStartChanged = (event) => {
-        this.setState({hue_start: event.target.value})
+        this.setState({hue_start: parseInt(event.target.value)})
     }
     hueEndChanged = (event) => {
-        this.setState({hue_end: event.target.value})
+        this.setState({hue_end: parseInt(event.target.value)})
     }
     hueCurveChanged = (event) => {
         this.setState({hue_curve: event.target.value})
     }
     statStartChanged = (event) => {
-        this.setState({sat_start: event.target.value})
+        this.setState({sat_start: parseInt(event.target.value)})
     }
     satEndChanged = (event) => {
-        this.setState({sat_end: event.target.value})
+        this.setState({sat_end: parseInt(event.target.value)})
     }
     satCurvedChanged = (event) => {
         this.setState({sat_curve: event.target.value})
     }
     satRateChanged = (event) => {
-        this.setState({sat_rate: event.target.value})
+        this.setState({sat_rate: parseInt(event.target.value)})
     }
     lumStartChanged = (event) => {
-        this.setState({lum_start: event.target.value})
+        this.setState({lum_start: parseInt(event.target.value)})
     }
     lumEndChanged = (event) => {
-        this.setState({lum_end: event.target.value})
+        this.setState({lum_end: parseInt(event.target.value)})
     }
     lumCurveChanged = (event) => {
         this.setState({lum_curve: event.target.value})
     }
     modifierChanged = (event) => {
-        this.setState({modifier: event.target.value})
+        this.setState({modifier: parseInt(event.target.value)})
+    }
+    contrastWhiteChanged = (event) => {
+        this.setState({contrastWhite: event.target.value})
+    }
+    contrastBlackChanged = (event) => {
+        this.setState({contrastBlack: event.target.value})
     }
 
     render() {
@@ -80,7 +85,9 @@ export class InputComponent extends Component {
         { id: 9, 'name': 'lum_start', label: "Luminosity Start",changeEvent: this.lumStartChanged },
         { id: 10, 'name': 'lum_end', label: "Luminosity End",changeEvent: this.lumEndChanged },
         { id: 11, 'name': 'lum_curve', label: "Luminosity Curve",changeEvent: this.lumCurveChanged },
-        { id: 12, 'name': 'modifier', label: "Modifier",changeEvent: this.modifierChanged }]
+        { id: 12, 'name': 'modifier', label: "Modifier",changeEvent: this.modifierChanged },
+        { id: 13, 'name': 'contrastWhite', label: "Contrast White",changeEvent: this.contrastWhiteChanged },
+        { id: 14, 'name': 'contrastBlack', label: "Contrast Black",changeEvent: this.contrastBlackChanged }]
         const inputFieldsToRender = inputParameters.map(spec => <ParameterInput key={spec.id} name={spec.label} value={this.state[spec.name]} change={spec.changeEvent}></ParameterInput>) 
         return (
             <div class="container">
@@ -90,17 +97,17 @@ export class InputComponent extends Component {
                     <button type="submit">Calculate</button>
                 </form>
                 </div>
-                <div  class="container-item"><OutputComponent value={JSON.stringify(this.state.outputVal)}></OutputComponent></div>
+                <div  className="container-item"><OutputComponent value={JSON.stringify(this.state.outputVal)}></OutputComponent></div>
             </div>
         )
     }
 
     handleSubmit = (event) => {
         console.log('Calling generate with ', this.state)
-        const res = generate.generate(this.state)
-        console.log('Received res ', res)
+        const result = generate.generate(this.state).map(res => { return {number:res.no, hex: res.hex, contrastWhite: res.contrastWhite, contrastBlack: res.contrastBlack } })
+        console.log('Received res ', result)
         this.setState({
-            outputVal:res
+            outputVal:result
         })
         event.preventDefault()
     }
