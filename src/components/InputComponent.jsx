@@ -30,47 +30,108 @@ export class InputComponent extends Component {
     }
 
     stepChanged = (event) => {
-        this.setState({steps: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ steps: "" })
+        } else {
+            this.setState({ steps: parseInt(event.target.value) })
+        }
+        
     }
     
     hueStartChanged = (event) => {
-        this.setState({hue_start: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ hue_start: "" })
+        } else {
+            this.setState({ hue_start: parseInt(event.target.value) })
+        }
     }
     hueEndChanged = (event) => {
-        this.setState({hue_end: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ hue_end: "" })
+        } else {
+            this.setState({ hue_end: parseInt(event.target.value) })
+        }
     }
     hueCurveChanged = (event) => {
-        this.setState({hue_curve: event.target.value})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ hue_curve: "" })
+        } else {
+            this.setState({ hue_curve: parseInt(event.target.value) })
+        }
     }
     statStartChanged = (event) => {
-        this.setState({sat_start: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ sat_start: "" })
+        } else {
+            this.setState({ sat_start: parseInt(event.target.value) })
+        }
     }
     satEndChanged = (event) => {
-        this.setState({sat_end: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ sat_end: "" })
+        } else {
+            this.setState({ sat_end: parseInt(event.target.value) })
+        }
     }
     satCurvedChanged = (event) => {
         this.setState({sat_curve: event.target.value})
     }
     satRateChanged = (event) => {
-        this.setState({sat_rate: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ sat_rate: "" })
+        } else {
+            this.setState({ sat_rate: parseInt(event.target.value) })
+        }
     }
     lumStartChanged = (event) => {
-        this.setState({lum_start: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ lum_start: "" })
+        } else {
+            this.setState({ lum_start: parseInt(event.target.value) })
+        }
     }
     lumEndChanged = (event) => {
-        this.setState({lum_end: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ lum_end: "" })
+        } else {
+            this.setState({ lum_end: parseInt(event.target.value) })
+        }
     }
     lumCurveChanged = (event) => {
         this.setState({lum_curve: event.target.value})
     }
     modifierChanged = (event) => {
-        this.setState({modifier: parseInt(event.target.value)})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ modifier: "" })
+        } else {
+            this.setState({ modifer: parseInt(event.target.value) })
+        }
     }
     contrastWhiteChanged = (event) => {
-        this.setState({contrastWhite: event.target.value})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ contrastWhite: "" })
+        } else {
+            this.setState({ contrastWhite: parseInt(event.target.value) })
+        }
     }
     contrastBlackChanged = (event) => {
-        this.setState({contrastBlack: event.target.value})
+        const receivedValue = event.target.value
+        if (receivedValue === null || receivedValue === '') {
+            this.setState({ contrastBlack: "" })
+        } else {
+            this.setState({ contrastBlack: parseInt(event.target.value) })
+        }
     }
 
     render() {
@@ -90,8 +151,8 @@ export class InputComponent extends Component {
         { id: 14, 'name': 'contrastBlack', label: "Contrast Black",changeEvent: this.contrastBlackChanged }]
         const inputFieldsToRender = inputParameters.map(spec => <ParameterInput key={spec.id} name={spec.label} value={this.state[spec.name]} change={spec.changeEvent}></ParameterInput>) 
         return (
-            <div class="container">
-                <div class="container-item">
+            <div className="container">
+                <div className="container-item">
                 <form onSubmit = {this.handleSubmit}>
                     {inputFieldsToRender}
                     <button type="submit">Calculate</button>

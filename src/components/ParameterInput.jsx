@@ -8,7 +8,7 @@ function ParameterInput(props) {
                 <label>{props.name}</label>
             </div>
             <div className="container-item">
-                <input type = "text" value = {props.value} onChange = {props.change}></input>
+                <input className="input-item" type = "text" value = {props.value} onChange = {props.change} placeholder={props.name}></input>
             </div>
         </div>
     )
