@@ -25,7 +25,7 @@ export class InputComponent extends Component {
             modifier: 10,
             contrastWhite: "fafafa",
             contrastBlack: "0d0f12",
-            outputVal: ""
+            outputVal: "Result comes here"
         }
     }
 
@@ -131,7 +131,7 @@ export class InputComponent extends Component {
             this.setState({ contrastWhite: event.target.value })
         }
     }
-    
+
     contrastBlackChanged = (event) => {
         const receivedValue = event.target.value
         if (receivedValue === null || receivedValue === '') {
